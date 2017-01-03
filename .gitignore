@@ -5,3 +5,4 @@ __pycache__
 myvenv
 .env
 staticfiles
+local_settings.py
