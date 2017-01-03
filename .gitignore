@@ -6,3 +6,5 @@ myvenv
 .env
 staticfiles
 local_settings.py
+Procfile
+runtime.txt
