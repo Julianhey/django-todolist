@@ -82,7 +82,7 @@ DATABASES = {
         'NAME': 'djangotodo',
         'USER': 'django',
         'PASSWORD': 'django',
-        'HOST': '',
+        'HOST': 'localhost',
         'Port': '',
     }
 }
