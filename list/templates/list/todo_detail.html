@@ -1,0 +1,16 @@
+{% extends 'list/base.html' %}
+
+{% block content %}
+    <div class="todo">
+        {% if todo.deadline_date %}
+            <div class="date">
+                {{ todo.deadline_date }}
+            </div>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'todo_edit' pk=todo.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        <h1>{{ todo.title }}</h1>
+        <p>{{ todo.text|linebreaksbr }}</p>
+    </div>
+{% endblock %}
