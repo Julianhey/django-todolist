@@ -11,7 +11,7 @@
     <div class="content container">
           <div class="row">
               <div class="col-md-8">
-                <h1>Your Library <h2>Click items for more info</h2><a href="{% url 'game_add' %}" class="btn-primary btn gamebtn"><img class="home-button" src="{% static 'resources/re2.png' %}" /> Add a Game</a></h1>
+                <h1>Your Library<a href="{% url 'game_add' %}" class="btn-primary btn gamebtn"><img class="home-button" src="{% static 'resources/re2.png' %}" /> Add a Game</a></h1>
 
                 {% if gameinstance_list %}
                 <ul>

@@ -16,13 +16,15 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views
-
-
-
+from rest_framework.urlpatterns import format_suffix_patterns
+from list import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('registration.backends.simple.urls')),
     url(r'', include('list.urls')),
+    url(r'^games/', views.GameList.as_view()),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

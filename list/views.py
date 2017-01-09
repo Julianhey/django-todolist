@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
 from registration.backends.simple.views import RegistrationView
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from .serializers import GameSerializer
 
 
 # Create your views here.
@@ -100,3 +104,14 @@ def game_add(request):
     else:
             form = GameForm()
             return render(request, 'list/game_add.html', {'form': form})
+
+
+
+class GameList(APIView):
+    def get(self, request):
+        games = GameInstance.objects.all()
+        serializer = GameSerializer(games, many=True)
+        return Response(serializer.data)
+
+    def post(self):
+        pass
