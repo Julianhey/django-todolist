@@ -2,9 +2,13 @@
 
 {% block content %}
     {% for todo in todos%}
-        <p class="bg-info">
+        <div class="todo">
+          <div class="date">
+            {{ todo.deadline_date}}
+          </div>
           <b><a href="{% url 'todo_detail' pk=todo.pk %}">{{ todo.title }}</a></b> <code>by {{ todo.deadline_date }}</code>
-          {{ todo.text|linebreaksbr }}
-      </p>
+          <p>{{ todo.text|linebreaksbr }}</p>
+          <a href="{% url 'todo_detail' pk=todo.pk %}">Comments: {{ todo.approved_comments.count }}</a>
+      </div>
     {% endfor %}
 {% endblock %}

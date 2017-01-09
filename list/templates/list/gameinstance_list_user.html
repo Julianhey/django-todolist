@@ -1,0 +1,19 @@
+{% extends "list/base.html" %}
+
+{% block content %}
+    <h1>Your Library</h1>
+
+    {% if gameinstance_list %}
+    <ul>
+
+      {% for gameinstance in gameinstance_list %}
+      <a href=""><li class=list-group-item>
+        {{gameinstance.title}}
+      </li></a>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no games in your library.</p>
+    {% endif %}
+{% endblock %}

@@ -2,17 +2,94 @@
 
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Game Library</title>
+
+  <link rel="icon" type="image/png" href="{% static '/resources/steam-icon-14869.png' %}" />
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <link rel="stylesheet" href="{% static 'css/list.css' %}">
+  <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+  <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/Login-Form-Dark.css' %}">
 </head>
 <body>
+  <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a  class="navbar-brand with-image" href="index.html"style="width: 75px"><img class="home-button-actual" src="{% static 'resources/re2.png' %}" /></a>
+          </div>
+
+          <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+
+                  <li class="dropdown">
+                      <a class="dropdown-toggle with-image" data-toggle="dropdown" href="#"><img class="home-button" src="{% static 'resources/steam-xxl.png' %}" /></a><a class="dropdown-toggle with-image" data-toggle="dropdown" href="#">Steam<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a href="#">Counter-Strike: Global Offensive</a></li>
+
+                      </ul>
+                  </li>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle with-image" data-toggle="dropdown" href="#"><img class="home-button" src="{% static 'resources/WhitePS.png' %}" /></a><a class="dropdown-toggle with-image" data-toggle="dropdown" href="#">Playstation<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a class="no-items btn disabled" href="#">-Empty-</a></li>
+
+                      </ul>
+                  </li>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle with-image" data-toggle="dropdown" href="#"><img class="home-button" src="{% static 'resources/consoles-xbox-xxl.png' %}" /></a><a class="dropdown-toggle with-image" data-toggle="dropdown" href="#">Xbox<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a class="no-items btn disabled" href="#">-Empty-</a></li>
+
+                      </ul>
+                  </li>
+                  <li class="dropdown">
+                      <a class="dropdown-toggle with-image" data-toggle="dropdown" href="#"><img class="home-button" src="{% static 'resources/WhiteNin.png' %}" /></a><a class="dropdown-toggle with-image" data-toggle="dropdown" href="#">Nintendo<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                          <li><a class="no-items btn disabled" href="#">-Empty-</a></li>
+
+                      </ul>
+                  </li>
+
+
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  {% if user.is_authenticated %}
+                  <li><a id="logout" href="{% url 'auth_logout' %}?next=/"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                  {% else %}
+                  <li><a id="signup" href="{% url 'registration_register' %}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                  <li><a id="login"  href="{% url 'auth_login' %}"><span class="glyphicon glyphicon-log-in "></span> Login</a></li>
+                  {% endif %}
+              </ul>
+          </div>
+      </div>
+  </nav>
+
   <div class="page-header">
           {% if user.is_authenticated %}
-          <a href="{% url 'todo_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-          {% endif %}
-          <h1><a href="/">Epic todolist</a></h1>
+              <a href="{% url 'game_add' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+
   </div>
+
+  <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+            {% block add %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+
   <div class="content container">
         <div class="row">
             <div class="col-md-8">
@@ -21,5 +98,75 @@
             </div>
         </div>
     </div>
+
+
+{% endif %}
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">About
+                </h1>
+            </div>
+        </div>
+
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Amazing game library. <span class="text-muted">It'll blow your mind.</span></h2>
+                <p class="lead">Creat your own library with all your games and their platform</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'resources/Screenshots/Rocket%20League/670-5.jpg' %}" alt="image">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-5 ">
+                <img class="featurette-image mx-auto img-fluid" src="{% static 'resources/Screenshots/Civ%206/ss_5e0384c02a55ac8378c5b7b2be60fb4a451f866e.1920x1080.jpg' %}" alt="image">
+            </div>
+            <div class="col-md-7 ">
+                <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">Screenshots everywhere *in the works.</span></h2>
+                <p class="lead">Displaying some crisp screenshots of the games taken from an outside api (if I have enought time to put it in)</p>
+            </div>
+
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">And lastly, Metadata. <span class="text-muted">Checkmate.</span></h2>
+                <p class="lead">Register and login to gain start using your library.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="featurette-image img-fluid mx-auto" src="{% static 'resources/Screenshots/Portal%202/Portal%202%20Screenshot%208.jpg' %}" alt="image">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+
+
+
+    </div><!-- /.container -->
+
+
+
+    </div>
+
+
+    <footer>
+
+        <p>&copy; 2017 Julian(Kappa), Inc.  All information and images freely provided by IGDB.com &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+    </footer>
+
+
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
 </body>
 <html>

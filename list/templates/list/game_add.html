@@ -1,0 +1,27 @@
+{% extends "list/base.html" %}
+
+{% block add %}
+
+    <div class="login-dark" id="noback">
+        <form method="POST" action".">
+          {% csrf_token %}
+            <h2 class="sr-only">Add Game</h2>
+            <div class="form-group">
+            <div class="centered_login_form_text">{{ form.title.label_tag }}</div>
+            <div class="centered_login_form"> {{ form.title }}</div>
+
+            </div>
+            <div class="form-group">
+            <div class="centered_login_form_text">{{ form.platform.label_tag }}</div>
+            <div class="centered_login_form"> {{ form.platform }}</div>
+
+            </div>
+            <div class="form-group">
+            {% if form.errors %}
+                <p>Your input was not accepted. Please try again.</p>
+            {% endif %}
+            </div>
+            <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">Add</button>
+            </div>
+{% endblock %}
