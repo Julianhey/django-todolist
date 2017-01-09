@@ -5,6 +5,7 @@ from .forms import TodoForm, CommentForm, GameForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views import generic
+from registration.backends.simple.views import RegistrationView
 
 
 # Create your views here.
@@ -82,7 +83,7 @@ def comment_remove(request, pk):
 class GameLibraryView(LoginRequiredMixin, generic.ListView):
     model = GameInstance
     template_name = 'list/gameinstance_list_user.html'
-    
+
 
     def get_queryset(self):
         return GameInstance.objects.filter(user=self.request.user)
@@ -97,5 +98,5 @@ def game_add(request):
             gameinstance.save()
             return redirect('my-library')
     else:
-        form = GameForm()
-    return render(request, 'list/game_add.html', {'form': form})
+            form = GameForm()
+            return render(request, 'list/game_add.html', {'form': form})

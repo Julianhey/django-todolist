@@ -18,20 +18,37 @@
 
 #noback {
   background: url('');
-  background-size:cover;
+  height:300px;
   position:relative;
+  margin-left: 80px;
 }
 
-#noback form{
-    
-    width:90%;
+
+#nobackform {
+    max-width: 500px;
+    width:50%
     background-color:#1e2833;
-    padding:40px;
+    padding-left: 40px;
+    padding-bottom: : 20px;
     border-radius:4px;
+    transform:translate(-10%, -10%);
+    position:absolute;
+    top:10%;
+    left:0%;
     color:#fff;
     box-shadow:3px 3px 3px 4px rgba(0,0,0,0.2);
   }
-}
+
+  .centered_login_form_test {
+    background:none;
+    border:none;
+    border-bottom:1px solid #434a52;
+    border-radius:0;
+    box-shadow:none;
+    outline:none;
+    color:inherit;
+  }
+
 
 .login-dark form {
   max-width:320px;

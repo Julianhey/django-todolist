@@ -32,8 +32,7 @@
             {% if form.username.errors %}
             <p class="errors">{{ form.username.errors.as_text }}</p>
             {% endif %}
-            <div class="centered_login_form_text">{{ form.username.label_tag }}</div>
-            <div class="centered_login_form">{{ form.username }}</div>
+            <input id="id_username" type="text" name="username" placeholder="Username" class="form-control" required />
 
 
             </div>
@@ -42,8 +41,7 @@
             {% if form.email.errors %}
             <p class="errors">{{ form.email.errors.as_text }}</p>
             {% endif %}
-            <div class="centered_login_form_text">{{ form.email.label_tag }}</div>
-            <div class="centered_login_form">{{ form.email }}</div>
+            <input id="id_email" type="email" name="email" placeholder="Email" class="form-control" required />
 
 
             </div>
@@ -52,8 +50,7 @@
             {% if form.password1.errors %}
             <p class="errors">{{ form.password1.errors.as_text }}</p>
             {% endif %}
-            <div class="centered_login_form_text">{{ form.password1.label_tag }}</div>
-            <div class="centered_login_form">{{ form.password1 }}</div>
+            <input id="id_password1" type="Password" name="password1" placeholder="Password" class="form-control" required />
 
             </div>
             <div class="form-group">
@@ -61,8 +58,7 @@
             {% if form.password2.errors %}
             <p class="errors">{{ form.password2.errors.as_text }}</p>
             {% endif %}
-            <div class="centered_login_form_text">{{ form.password2.label_tag }}</div>
-            <div class="centered_login_form">{{ form.password2 }}</div>
+            <input id="id_password2" type="password" name="password2" placeholder="Password(again)" class="form-control" required />
 
 
             </div>

@@ -41,7 +41,7 @@ class GameInstance(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     user = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
-    platform = models.CharField(default="Not specified", max_length=200)
+    platform = models.CharField(default="", max_length=200)
 
     def __str__(self):
         return self.title

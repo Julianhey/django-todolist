@@ -12,7 +12,6 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <link rel="stylesheet" href="{% static 'css/list.css' %}">
   <link rel="stylesheet" href="{% static 'css/custom.css' %}">
   <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
   <link rel="stylesheet" href="{% static 'css/Login-Form-Dark.css' %}">
@@ -29,40 +28,6 @@
               <a  class="navbar-brand with-image" href="index.html"style="width: 75px"><img class="home-button-actual" src="{% static 'resources/re2.png' %}" /></a>
           </div>
 
-          <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-
-                  <li class="dropdown">
-                      <a class="dropdown-toggle with-image" data-toggle="dropdown" href="#"><img class="home-button" src="{% static 'resources/steam-xxl.png' %}" /></a><a class="dropdown-toggle with-image" data-toggle="dropdown" href="#">Steam<span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                          <li><a href="#">Counter-Strike: Global Offensive</a></li>
-
-                      </ul>
-                  </li>
-                  <li class="dropdown">
-                      <a class="dropdown-toggle with-image" data-toggle="dropdown" href="#"><img class="home-button" src="{% static 'resources/WhitePS.png' %}" /></a><a class="dropdown-toggle with-image" data-toggle="dropdown" href="#">Playstation<span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                          <li><a class="no-items btn disabled" href="#">-Empty-</a></li>
-
-                      </ul>
-                  </li>
-                  <li class="dropdown">
-                      <a class="dropdown-toggle with-image" data-toggle="dropdown" href="#"><img class="home-button" src="{% static 'resources/consoles-xbox-xxl.png' %}" /></a><a class="dropdown-toggle with-image" data-toggle="dropdown" href="#">Xbox<span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                          <li><a class="no-items btn disabled" href="#">-Empty-</a></li>
-
-                      </ul>
-                  </li>
-                  <li class="dropdown">
-                      <a class="dropdown-toggle with-image" data-toggle="dropdown" href="#"><img class="home-button" src="{% static 'resources/WhiteNin.png' %}" /></a><a class="dropdown-toggle with-image" data-toggle="dropdown" href="#">Nintendo<span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                          <li><a class="no-items btn disabled" href="#">-Empty-</a></li>
-
-                      </ul>
-                  </li>
-
-
-              </ul>
               <ul class="nav navbar-nav navbar-right">
                   {% if user.is_authenticated %}
                   <li><a id="logout" href="{% url 'auth_logout' %}?next=/"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
@@ -75,32 +40,32 @@
       </div>
   </nav>
 
-  <div class="page-header">
-          {% if user.is_authenticated %}
-              <a href="{% url 'game_add' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
 
-  </div>
 
-  <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block add %}
-            {% endblock %}
-            </div>
-        </div>
-    </div>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+            <h1 class="page_title"><img class="headimg img1" src="{% static 'resources/steam-xxl.png' %}" />
+            <img class="headimg img1" src="{% static 'resources/WhitePS.png' %}" />
+            Game Library
+            <img class="headimg img2" src="{% static 'resources/consoles-xbox-xxl.png' %}" />
+            <img class="headimg img2" src="{% static 'resources/WhiteNin.png' %}" /></h1>
+          </div>
+      </div>
 
-  <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
-            </div>
-        </div>
-    </div>
+      <hr class="featurette-divider smaller">
+
+  {% if user.is_authenticated %}
+
+  {% block content %}
+  {% endblock %}
+
+  <a  href="{% url 'my-library' %}">Please follow this link to the main library page, if you are not on it already. The registration redirect wouldn't work as intended, my apologies.</a>
 
 
 {% endif %}
+
+
 
 
     <div class="container">

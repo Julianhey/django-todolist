@@ -1,19 +1,41 @@
 {% extends "list/base.html" %}
-
+{% load staticfiles %}
 {% block content %}
-    <h1>Your Library</h1>
 
-    {% if gameinstance_list %}
-    <ul>
 
-      {% for gameinstance in gameinstance_list %}
-      <a href=""><li class=list-group-item>
-        {{gameinstance.title}}
-      </li></a>
-      {% endfor %}
-    </ul>
 
-    {% else %}
-      <p>There are no games in your library.</p>
-    {% endif %}
+
+
+
+
+    <div class="content container">
+          <div class="row">
+              <div class="col-md-8">
+                <h1>Your Library <a href="{% url 'game_add' %}" class="btn-primary btn gamebtn"><img class="home-button" src="{% static 'resources/re2.png' %}" /> Add a Game</a></h1>
+
+                {% if gameinstance_list %}
+                <ul>
+
+                  {% for gameinstance in gameinstance_list %}
+                  <a href=""><li class=list-group-item>
+                    {{gameinstance.title}}
+                  </li></a>
+                  {% endfor %}
+                </ul>
+
+                {% else %}
+                  <p>There are no games in your library.</p>
+                {% endif %}
+  
+              </div>
+              <div class="col-md-3 infobar">
+                <h2 class="page_title">Game Info:</h2>
+                <div class="info">Title:<p id="infoptitle"></p></div>
+                <div class="info">Summary:</div>
+                <p id="infopsum"></p>
+                <div class="info">Release date:<p id="infopdate"></p></div>
+              </div>
+          </div>
+      </div>
+
 {% endblock %}

@@ -1,27 +1,41 @@
 {% extends "list/base.html" %}
+{% load staticfiles %}
 
-{% block add %}
+{% block content %}
 
-    <div class="login-dark" id="noback">
-        <form method="POST" action".">
-          {% csrf_token %}
-            <h2 class="sr-only">Add Game</h2>
-            <div class="form-group">
-            <div class="centered_login_form_text">{{ form.title.label_tag }}</div>
-            <div class="centered_login_form"> {{ form.title }}</div>
+            <div class="content container">
+                  <div class="row">
+                      <div class="col-md-8">
 
-            </div>
-            <div class="form-group">
-            <div class="centered_login_form_text">{{ form.platform.label_tag }}</div>
-            <div class="centered_login_form"> {{ form.platform }}</div>
+                        <div class="login-dark" id="noback">
+                            <form id="nobackform" method="POST" action".">
+                              {% csrf_token %}
+                                <h2 class="sr-only">Add Game</h2>
 
-            </div>
-            <div class="form-group">
-            {% if form.errors %}
-                <p>Your input was not accepted. Please try again.</p>
-            {% endif %}
-            </div>
-            <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit">Add</button>
-            </div>
+                                <div class="form-group">
+
+                                    <input id="id_title" type="text" name="title" placeholder="Title" class="form-control" required />
+
+                                </div>
+
+
+
+
+                                <div class="form-group">
+                                <!--<input type="text" name="title" placeholder="Platform" class="form-control" {{ "form.platform" }}></input>-->
+
+                                <input id="id_platform" type="text" name="platform" placeholder="Platform you have the game for" class="form-control" required />
+                                </div>
+                                <div class="form-group">
+                                {% if form.errors %}
+                                    <p>Your input was not accepted. Please try again.</p>
+                                {% endif %}
+                                </div>
+                                <div class="form-group">
+                                <button class="btn btn-primary btn-block" type="submit">Add</button>
+                                </div>
+
+                      </div>
+                  </div>
+              </div>
 {% endblock %}
